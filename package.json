@@ -1,0 +1,21 @@
+{
+  "name": "application-name",
+  "version": "0.0.1",
+  "private": true,
+  "engines": {
+    "coffee": "1.4.x", 
+    "node": "0.8.x"
+  },
+  "main": "./lib/app.coffee",
+  "scripts": {
+    "start": "coffee ./lib/app.coffee",
+    "test": "",
+    "deploy": "./install.sh"
+  },
+  "dependencies": {
+      "express": "3.0.x"
+      ,"jade": "0.27.x"
+  },
+  "devDependencies": {
+  }
+}
