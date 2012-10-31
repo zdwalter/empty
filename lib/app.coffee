@@ -2,7 +2,6 @@
 Module dependencies.
 ###
 express = require("express")
-http = require("http")
 path = require("path")
 
 ## private modules
@@ -16,6 +15,7 @@ logger = require("./logger")
 app = express()
 app.configure ->
   app.set "port", process.env.PORT or config.web.port
+  app.set "portSSL", process.env.PORT_SSL or config.web.portSSL
   app.set "views", __dirname + "/../views"
   app.set "view engine", "jade"
   app.use express.favicon()
@@ -56,6 +56,7 @@ app.post "/api/ticket", [restrict], ticket.post
 
 # start server
 if (!module.parent)
+  http = require("http")
   http.createServer(app).listen app.get("port"), ->
     logger.info "Express server listening on port " + app.get("port")
 else
