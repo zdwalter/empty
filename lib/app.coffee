@@ -7,8 +7,9 @@ path = require("path")
 
 ## private modules
 routes = require("./routes")
-user = require("./routes/user")
 example = require("./routes/example")
+request = require("./routes/request")
+
 config = require("./config")
 logger = require("./logger")
 
@@ -27,10 +28,11 @@ app.configure ->
 app.configure "development", ->
   app.use express.errorHandler()
 
-#TODO: put {path, middlewares, function} to separate config files
+#TODO: put {method, path, middlewares, function} to separate config files
 app.get "/", routes.index
 app.get "/api/examples", example.list
-app.get "/users", user.list
+app.post "/api/request", request.post
+
 
 # start server
 http.createServer(app).listen app.get("port"), ->

@@ -72,8 +72,9 @@ APIView = Backbone.View.extend
         $.ajax
             url: api.url
             type: api.method
-            data: data
+            data: JSON.stringify(data)
             dataType: 'json'
+            contentType: "application/json; charset=utf-8"
             success: (res) ->
                 console.log JSON.stringify(res)
                 api.output = res
