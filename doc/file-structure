@@ -11,3 +11,4 @@
   |   +-- stylesheets/
   +-- test/                             #unit test
   +-- views/                            #templates
+  +-- doc/                              #documents

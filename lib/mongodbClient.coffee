@@ -18,10 +18,6 @@ connectionPool = poolMoudle.Pool(
   log: logLevel is "debug" #or process.env.NODE_ENV is "test"
 )
 
-mongoClient.destroyAllNow = () ->
-  connectionPool.drain () ->
-    connectionPool.destroyAllNow()
-
 releaseClient = (client) ->
   connectionPool.release client if client?
 
@@ -50,6 +46,5 @@ mongoClient.insert = (collectionName, docs, callback) ->
       if err
         return callback err
       return callback err, objs
-
 
 module.exports = mongoClient

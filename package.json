@@ -23,5 +23,6 @@
     "mocha": "*"
     ,"coffee-script": "*"
     ,"chai": "*"
+    ,"supertest": "*"
   }
 }
