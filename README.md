@@ -1,2 +1,1 @@
-empty
-=====
+slide at http://zdwalter.info/slides/sample-project
