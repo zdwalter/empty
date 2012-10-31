@@ -8,7 +8,7 @@ path = require("path")
 ## private modules
 routes = require("./routes")
 example = require("./routes/example")
-request = require("./routes/request")
+ticket = require("./routes/ticket")
 
 config = require("./config")
 logger = require("./logger")
@@ -31,7 +31,7 @@ app.configure "development", ->
 #TODO: put {method, path, middlewares, function} to separate config files
 app.get "/", routes.index
 app.get "/api/examples", example.list
-app.post "/api/request", request.post
+app.post "/api/ticket", ticket.post
 
 
 # start server

@@ -15,7 +15,7 @@ connectionPool = poolMoudle.Pool(
       client.close()
   max:10
   idleTimeoutMillis:3000
-  log: logLevel is "debug" or process.env.NODE_ENV is "test"
+  log: logLevel is "debug" #or process.env.NODE_ENV is "test"
 )
 
 mongoClient.destroyAllNow = () ->

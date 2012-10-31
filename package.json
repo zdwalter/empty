@@ -9,7 +9,7 @@
   "main": "./lib/app.coffee",
   "scripts": {
     "start": "NODE_ENV=test coffee ./lib/app.coffee",
-    "test": "",
+    "test": "make test",
     "deploy": "./install.sh"
   },
   "dependencies": {
@@ -20,5 +20,8 @@
       ,"generic-pool": "2.0.x"
   },
   "devDependencies": {
+    "mocha": "*"
+    ,"coffee-script": "*"
+    ,"chai": "*"
   }
 }

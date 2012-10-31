@@ -1,4 +1,4 @@
 examples = []
-examples.push require("./request")
+examples.push require("./ticket")
 
 module.exports = examples
