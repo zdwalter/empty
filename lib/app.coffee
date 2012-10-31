@@ -2,13 +2,19 @@
 Module dependencies.
 ###
 express = require("express")
-routes = require("./routes")
-user = require("./routes/user")
 http = require("http")
 path = require("path")
+
+## private modules
+routes = require("./routes")
+user = require("./routes/user")
+example = require("./routes/example")
+config = require("./config")
+logger = require("./logger")
+
 app = express()
 app.configure ->
-  app.set "port", process.env.PORT or 3000
+  app.set "port", process.env.PORT or config.web.port
   app.set "views", __dirname + "/../views"
   app.set "view engine", "jade"
   app.use express.favicon()
@@ -23,9 +29,10 @@ app.configure "development", ->
 
 #TODO: put {path, middlewares, function} to separate config files
 app.get "/", routes.index
+app.get "/api/examples", example.list
 app.get "/users", user.list
 
 # start server
 http.createServer(app).listen app.get("port"), ->
-  console.log "Express server listening on port " + app.get("port")
+  logger.info "Express server listening on port " + app.get("port")
 

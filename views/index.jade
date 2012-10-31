@@ -1,5 +1,86 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  .navbar.navbar-fixed-top
+    .navbar-inner
+      .container-fluid
+        a.btn.btn-navbar(data-toggle='collapse', data-target='.nav-collapse')
+          span.icon-bar
+          span.icon-bar
+          span.icon-bar
+        a.brand(href='#') API
+        .btn-group.pull-right
+          a.btn.dropdown-toggle(data-toggle='dropdown', href='#')
+            i.icon-user
+            | Username
+            span.caret
+          ul.dropdown-menu
+            li
+              a(href='#') Profile
+            li.divider
+            li
+              a(href='#') Sign Out
+        .nav-collapse
+          ul.nav
+            li.active
+              a(href='#') Home
+            li
+              a(href='#about') About
+            li
+              a(href='#contact') Contact
+        //
+          /.nav-collapse 
+  .container-fluid
+    .row-fluid
+      .span3
+        .well.sidebar-nav
+          #APIList
+            script#APIList(type="text/html")
+              ul.nav.nav-list
+                li.nav-header API List
+                | {{#examples}}
+                li
+                  a(href="#api/{{name}}") {{name}}
+                | {{/examples}}
+      .span9
+        #API
+          script#API(type="text/html")
+            h2 {{name}}
+            .alert.alert-info {{url}}
+            {{#method}}
+            .alert.alert-success method: {{method}}
+            {{/method}}
+            {{^method}}
+            .alert.alert-error method: Missing!!! Please update the document
+            {{/method}}
+            .alert.alert-success example link: 
+                a(href="{{link}}") {{link}} 
+            p {{description}}
+            h3 Input
+            form#input.well.form-horizontal
+              | {{#input}}
+              .control-group
+                label.control-label {{name}}
+                .controls.form-inline
+                  {{^required}}
+                  input.input-xlarge(type="text", name="{{name}}", value="{{value}}") 
+                  {{/required}}
+                  {{#required}}
+                  input.input-xlarge(type="text", name="{{name}}", value="{{value}}", required) 
+                  |  
+                  span.label.label-important required
+                  {{/required}}
+                  p.help-block {{comment}}
+              | {{/input}}
+              .form-actions
+                #run.btn.btn-large.btn-primary Try
+  
+            #output
+              h3 Output
+              pre {{output}}
+  
+    hr
+    footer
+      p © Company 2012
+  
+  script(type='text/coffeescript',src='/assets/js/example.coffee')
