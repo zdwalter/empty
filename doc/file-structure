@@ -1,0 +1,13 @@
+./
+  +-- lib/                              #Source code
+  +-- lib-cov/                          #for coverage
+  +-- lib-js/                           #compiled JS from source
+  +-- node_modules/                     #dependencies
+  +-- public/                           #static files
+  |   +-- assets/
+  |   |   +-- bootstrap/
+  |   |   +-- ico/
+  |   |   +-- js/
+  |   +-- stylesheets/
+  +-- test/                             #unit test
+  +-- views/                            #templates
