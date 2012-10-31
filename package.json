@@ -8,7 +8,7 @@
   },
   "main": "./lib/app.coffee",
   "scripts": {
-    "start": "coffee ./lib/app.coffee",
+    "start": "NODE_ENV=test coffee ./lib/app.coffee",
     "test": "",
     "deploy": "./install.sh"
   },
@@ -16,6 +16,8 @@
       "express": "3.0.x"
       ,"jade": "0.27.x"
       ,"winston": "0.6.x"
+      ,"mongodb": "1.1.x"
+      ,"generic-pool": "2.0.x"
   },
   "devDependencies": {
   }
