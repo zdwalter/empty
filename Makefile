@@ -15,6 +15,7 @@ test-cov: lib-cov
 	@LIB_COV=1 $(MAKE) test REPORTER=html-cov > coverage.html
 
 lib-cov: build
+	@which jscoverage || echo "download and install from https://github.com/visionmedia/node-jscoverage"
 	@jscoverage lib-js lib-cov
 
 build:
