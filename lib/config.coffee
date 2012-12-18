@@ -1,9 +1,5 @@
 module.exports =
-    mongodb:
-        host: "production.mongodb"
-        port: 27017
-        db: "test"
     web:
-        port: 3000
+        port: 3333
     log:
         level: "info"

@@ -7,7 +7,6 @@ path = require("path")
 ## private modules
 routes = require("./routes")
 example = require("./routes/example")
-ticket = require("./routes/ticket")
 
 config = require("./config")
 logger = require("./logger")
@@ -37,21 +36,14 @@ app.configure "test", ->
   app.use error
 # middlewares
 
-
-restrict = (req, res, next) ->
-  if req.session?.user
-    return next()
-  else
-    if req.xhr
-      res.send {error: 1, error_msg: "Access denied!"}
-    else
-      req.session.error = "Access denied!"
-      res.redirect "/login"
-
+basicAuth = express.basicAuth(
+  (username, password) ->
+    return username is 'admin' and password is 'admin111111'
+  , 'restrict area')
 #TODO: put {method, path, middlewares, function} to separate config files
-app.get "/", routes.index
-app.get "/api/examples", example.list
-app.post "/api/ticket", [restrict], ticket.post
+app.get "/", basicAuth, routes.index
+app.get "/api/examples", basicAuth, example.list
+app.get "/migrate", basicAuth, routes.migrate
 
 
 # start server

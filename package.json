@@ -8,8 +8,7 @@
   },
   "main": "./lib/app.coffee",
   "scripts": {
-    "start": "NODE_ENV=test coffee ./lib/app.coffee",
-    "test": "make test",
+    "test": "NODE_ENV=test coffee ./lib/app.coffee",
     "deploy": "./install.sh"
   },
   "dependencies": {
