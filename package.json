@@ -9,7 +9,9 @@
   "main": "./lib/app.coffee",
   "scripts": {
     "test": "NODE_ENV=test coffee ./lib/app.coffee",
-    "deploy": "./install.sh"
+    "deploy": "./install.sh",
+    "start": "make build; NODE_ENV=production forever start \"$PWD/lib-js/app.js\"",
+    "stop": "forever stop \"$PWD/lib-js/app.js\""
   },
   "dependencies": {
       "express": "3.0.x"
